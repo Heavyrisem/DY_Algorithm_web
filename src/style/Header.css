@@ -1,15 +1,17 @@
 header {
     width: 100%;
-    height: 2.5rem;
+    height: 4rem;
 
     display: flex;
 
     background-color: #1E1E1E;
     color: #BDBDBD;
+
+    font-size: 1.25rem;
 }
 
 header .Logo {
-    width: 1.75rem;
+    width: 2rem;
     margin-left: 1rem;
 }
 
