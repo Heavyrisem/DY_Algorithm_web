@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36.399" height="33.366" viewBox="0 0 36.399 33.366">
+  <g id="MenuButton" transform="translate(2.5 2.5)">
+    <line id="선_1" data-name="선 1" x2="31.399" fill="none" stroke="#bdbdbd" stroke-linecap="round" stroke-width="5"/>
+    <line id="선_2" data-name="선 2" x2="31.399" transform="translate(0 14.183)" fill="none" stroke="#bdbdbd" stroke-linecap="round" stroke-width="5"/>
+    <line id="선_3" data-name="선 3" x2="31.399" transform="translate(0 28.366)" fill="none" stroke="#bdbdbd" stroke-linecap="round" stroke-width="5"/>
+  </g>
+</svg>
