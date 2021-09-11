@@ -3,18 +3,19 @@ import '../style/AccouontInput.css';
 
 export interface AccountInput_P {
     name: string
-    type: 'text' | 'password'
+    type?: 'text' | 'password'
     placeholder: string
     style?: React.CSSProperties
-    onValue: React.ChangeEventHandler<HTMLInputElement>
+    ref?: any
+    onValue?: React.ChangeEventHandler<HTMLInputElement>
 }
-function AccountInput(props: AccountInput_P) {
+const AccountInput = React.forwardRef(function (props: AccountInput_P, ref: React.LegacyRef<HTMLInputElement>) {
     return (
-        <div className="AccountInput" style={props.style}>
+        <label className="AccountInput" style={props.style} htmlFor={props.name}>
             <div className="Type">{props.name}</div>
-            <input type={props.type} placeholder={props.placeholder} onChange={props.onValue} />
-        </div>
+            <input ref={ref} id={props.name} type={(props.type)? props.type:"text"} placeholder={props.placeholder} onChange={props.onValue} />
+        </label>
     )
-}
+})
 
 export default AccountInput;

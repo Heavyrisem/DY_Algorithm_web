@@ -1,10 +1,15 @@
 import React from "react";
+import { User_T } from "../Main";
 import '../style/Header.css';
 
 import Logo from '../style/img/Logo.svg';
 import Sidemenu from "./Sidemenu";
 
-function Header() {
+
+interface Header_P {
+    User?: User_T
+}
+function Header(props: Header_P) {
     const Paths = ["ChellengeName"];
     const RightAligen: React.CSSProperties = {
         margin: 'auto',
@@ -24,7 +29,7 @@ function Header() {
                 </>
             ))}
             <div style={RightAligen}>
-                <Sidemenu />
+                <Sidemenu User={props.User} />
             </div>
         </header>
     )

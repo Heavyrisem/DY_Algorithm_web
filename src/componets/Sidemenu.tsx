@@ -1,9 +1,15 @@
 import React, { EventHandler, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { User_T } from "../Main";
 import Button from "../style/img/MenuButton.svg";
 
 import '../style/Sidemenu.css';
 
-function Sidemenu() {
+
+interface Sidemenu_P {
+    User?: User_T
+}
+function Sidemenu(props: Sidemenu_P) {
     const [showMenu, setShowMenu] = useState<boolean>(false);
 
     function asdf(e: React.ChangeEvent<any>) {
@@ -18,7 +24,9 @@ function Sidemenu() {
             {showMenu&& <div className="DarkBackground" />}
             <div className={"Sidemenu" + (showMenu? " Open":"")}>
                 <div className="Header">
-                    <span className="UserNickname">사용자 닉네임</span>                                
+                    <span className="UserNickname">{props.User?
+                        props.User.U_Nickname : <Link to="/login" onClick={()=>setShowMenu(!showMenu)}>로그인이 필요합니다.</Link>
+                    }</span>                                
                     <img src={Button} className="SidemenuButton" onClick={()=>setShowMenu(!showMenu)} />
                 </div>
 

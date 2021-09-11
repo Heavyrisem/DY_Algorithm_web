@@ -1,4 +1,5 @@
 .AccountInput {
+    display: block;
     width: 100%;
     min-height: 3rem;
     padding: 0 .5rem;
@@ -30,9 +31,19 @@
     outline: none;
 
     font-weight: bold;
-    color: #E0E0E0;
+    -webkit-text-fill-color: #E0E0E0;
 }
 
 .AccountInput * {
     margin-bottom: .5rem;
+}
+
+.AccountInput input:-webkit-autofill,
+.AccountInput input:-webkit-autofill:hover, 
+.AccountInput input:-webkit-autofill:focus, 
+.AccountInput input:-webkit-autofill:active
+{
+    -webkit-box-shadow: 0 0 0 30px #444444 inset;
+    border: none;
+    transition: background-color 5000s ease-in-out 0s;
 }
