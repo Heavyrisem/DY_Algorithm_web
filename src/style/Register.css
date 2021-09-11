@@ -1,0 +1,29 @@
+.Register {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Register .Container {
+    margin: auto;
+    width: 35rem;
+    height: 43rem;
+
+    border-radius: 1rem;
+
+    padding: 5rem 7rem;
+    box-sizing: border-box;
+    transform: translateY(-5%);
+
+    background-color: #444444;
+}
+
+.Register .Title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #E0E0E0;
+}

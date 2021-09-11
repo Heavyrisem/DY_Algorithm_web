@@ -1,0 +1,38 @@
+.AccountInput {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0 .5rem;
+    margin-bottom: 1.5rem;
+
+    box-sizing: border-box;
+    transition: border .2s;
+
+    border-bottom: solid #707070 .15rem;
+    color: #E0E0E0;
+}
+.AccountInput:focus-within {
+    border-bottom: .15rem solid white;
+}
+
+.AccountInput .Type {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.AccountInput input {
+    width: 100%;
+    font-size: 1rem;
+    background: none;
+    appearance: none;
+    display: block;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+
+    font-weight: bold;
+    color: #E0E0E0;
+}
+
+.AccountInput * {
+    margin-bottom: .5rem;
+}

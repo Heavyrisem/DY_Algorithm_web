@@ -2,10 +2,11 @@
 
 
 html, body, #root {
+	/* overflow: hidden; */
 	color: #BDBDBD;
 	background-color: #252526;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', 'Segoe UI', 'Roboto', 'Oxygen',
 		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,4 +21,10 @@ html, body, #root {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+}
+
+.Main {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }

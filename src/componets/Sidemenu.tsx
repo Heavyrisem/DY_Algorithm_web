@@ -1,9 +1,10 @@
 import React, { EventHandler, useEffect, useRef, useState } from "react";
 import Button from "../style/img/MenuButton.svg";
+
 import '../style/Sidemenu.css';
 
 function Sidemenu() {
-    const [showMenu, setShowMenu] = useState<boolean>(true);
+    const [showMenu, setShowMenu] = useState<boolean>(false);
 
     function asdf(e: React.ChangeEvent<any>) {
         console.log(e.target.value);
@@ -20,6 +21,16 @@ function Sidemenu() {
                     <span className="UserNickname">사용자 닉네임</span>                                
                     <img src={Button} className="SidemenuButton" onClick={()=>setShowMenu(!showMenu)} />
                 </div>
+
+                <Section name="Section">
+                    <Text name="설정_텍스트" onValue={asdf} />
+                    <Dropdown name="설정_드롭다운_메뉴" onValue={asdf}>
+                        <option value="12asdf3">123asdfasdf</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </Dropdown>
+                    <Toggle name="설정_토글" onValue={(e)=>{console.log(e.target.checked)}} />
+                </Section>
 
                 <Section name="Section">
                     <Text name="설정_텍스트" onValue={asdf} />
