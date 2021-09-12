@@ -7,7 +7,7 @@ interface SearchBar_P {
     onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 const SearchBar = React.forwardRef(function (props: SearchBar_P, ref: React.LegacyRef<HTMLInputElement>) {
-    const [focused, setFocused] = useState<boolean>(true);
+    const [focused, setFocused] = useState<boolean>(false);
 
     return (
         <>
