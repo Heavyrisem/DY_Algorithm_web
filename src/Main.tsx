@@ -6,6 +6,7 @@ import Home from './routes/Home';
 import Challenge from './routes/Challenge';
 import Login from './routes/Login';
 import Register from './routes/Register';
+import Sidemenu from './componets/Sidemenu';
 
 export interface User_T {
 	U_ID: string
@@ -20,7 +21,9 @@ function Main() {
 	return (
 		<div className="Main">
 			<Router>
-				<Header User={User}/>
+				<Header>
+					<Sidemenu User={User} />
+				</Header>
 				<Switch>
 					<Route path="/challenge">
 						<Challenge />

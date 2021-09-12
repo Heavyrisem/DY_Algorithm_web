@@ -1,0 +1,13 @@
+.Home {
+    width: 100%;
+    height: 100%;
+}
+
+.DashBoards {
+    width: 90%;
+    height: 25rem;
+    
+    display: flex;
+    margin: auto;
+    margin-top: 15rem;
+}

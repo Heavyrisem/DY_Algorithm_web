@@ -5,7 +5,6 @@ import Button from "../style/img/MenuButton.svg";
 
 import '../style/Sidemenu.css';
 
-
 interface Sidemenu_P {
     User?: User_T
 }

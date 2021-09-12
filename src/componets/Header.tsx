@@ -1,13 +1,11 @@
 import React from "react";
-import { User_T } from "../Main";
 import '../style/Header.css';
 
 import Logo from '../style/img/Logo.svg';
-import Sidemenu from "./Sidemenu";
 
 
 interface Header_P {
-    User?: User_T
+    children: React.ReactElement | React.ReactElement[]
 }
 function Header(props: Header_P) {
     const Paths = ["ChellengeName"];
@@ -29,7 +27,7 @@ function Header(props: Header_P) {
                 </>
             ))}
             <div style={RightAligen}>
-                <Sidemenu User={props.User} />
+                {props.children}
             </div>
         </header>
     )

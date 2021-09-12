@@ -1,0 +1,78 @@
+.SearchBar {
+    width: 55rem;
+    height: 3.5rem;
+
+    margin: auto;
+    margin-top: 10rem;
+
+    display: flex;
+    padding: 1em 1.5rem;
+    box-sizing: border-box;
+
+    border-radius: 1rem;
+
+    background-color: #E0E0E0;
+    /* transition: all 0.3s; */
+}
+.SearchBar:focus-within {
+    border-radius: 1rem 1rem 0 0;
+}
+
+.SearchBar img {
+    width: 2rem;
+}
+
+.SearchBar input {
+    width: 95%;
+    margin: auto;
+    margin-right: 0;
+
+    color: #444444;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0;
+
+    border: none;
+    background: none;
+    outline: none;
+}
+
+
+.SearchSuggest {
+    position: absolute;
+    overflow: hidden;
+    /* display: none; */
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 0 0 1rem 1rem;
+
+    width: 55rem;
+    height: 0;
+
+    box-sizing: border-box;
+    background-color: #E0E0E0;
+
+    transition: height 0.3s;
+}
+
+.SearchSuggest.Open {
+    height: auto;
+    /* display: block; */
+    /* padding: 0em 1.5rem; */
+}
+
+.SearchSuggest .Suggest {
+    padding: 0.7rem 4.1rem;
+    
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #444444;
+}
+.SearchSuggest .Suggest:hover {
+    background-color: #D8D8D8;
+}
+.Suggest:last-child {
+    border-radius: 0 0 1rem 1rem;
+}
