@@ -17,17 +17,25 @@ export interface User_T {
 function Main() {
 	const [User, setUser] = useState<User_T>();
 	const [path, setPath] = useState<string[]>([]);
+	const [buttons, setButtons] = useState([<div>123123</div>]);
 
 	let Path_C: PathContext_T = {
 		path: path,
 		setPath: setPath
 	}
 
+	let Buttons_C: HeaderButton_T = {
+		buttons: buttons,
+		setButtons: setButtons
+	}
+
+
 	return (
 		<div className="Main">
 		<PathContext.Provider value={Path_C}>
 				<Router>
 					<Header>
+						{/* {buttons.map(v))} */}
 						<Sidemenu User={User} />
 					</Header>
 					<Switch>
@@ -56,6 +64,15 @@ export interface PathContext_T {
 export const PathContext = React.createContext<PathContext_T>({
     path: [],
     setPath: (path: string[]) => {}
+});
+
+export interface HeaderButton_T {
+    buttons: React.ReactElement[],
+    setButtons: (buttons: React.ReactElement[]) => void
+}
+export const HeaderButton = React.createContext<HeaderButton_T>({
+    buttons: [],
+    setButtons: (buttons) => {}
 });
 
 export default Main;
