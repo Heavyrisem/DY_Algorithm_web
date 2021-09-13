@@ -33,4 +33,9 @@
     display: inline-block;
     overflow: scroll;
 }
-
+.VerticalScaler .View {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    overflow: scroll;
+}

@@ -1,4 +1,4 @@
-header {
+.Main > header {
     width: 100%;
     height: 4rem;
 
@@ -10,25 +10,24 @@ header {
     font-size: 1.25rem;
 }
 
-header .Logo {
+.Main > header .Logo {
     width: 2rem;
     margin-left: 1rem;
 }
 
-header span {
+.Main > header span, a {
     margin-top: auto;
     margin-bottom: auto;
 }
 
-header .Title {
-    /* font-size: 100%; */
+.Main > header .Title {
     font-weight: bold;
     margin-left: 1rem;
 }
 
-header .Path {
+.Main > header .Path {
     cursor: pointer;
 }
-header .Path, header .PathDevider {
+.Main > header .Path, .Main > header .PathDevider {
     margin-left: .3rem;
 }

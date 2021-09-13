@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { PathContext } from "../Main";
 import '../style/Header.css';
 
@@ -20,7 +21,8 @@ function Header(props: Header_P) {
     return (
         <header>
             <img src={Logo} className="Logo" />
-            <span className="Title">DYalgorithm</span>
+            <Link className="Title" to="/">DYalgorithm</Link>
+            {/* <span className="Title">DYalgorithm</span> */}
             {path.map((Path, idx) => (
                 <>
                     {(idx == Path.length-1)&& <span key={idx} className="PathDevider">/</span>}

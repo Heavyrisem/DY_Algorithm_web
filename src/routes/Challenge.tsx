@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
+import MonacoEditor from 'react-monaco-editor';
 import { RouteComponentProps } from 'react-router';
 import HorizontalScaler from '../componets/HorizontalScaler';
+import Terminal from '../componets/Terminal';
 import VerticalScaler from '../componets/VerticalScaler';
 import { PathContext } from '../Main';
+
 
 import '../style/Challenge.css';
 
@@ -34,13 +37,26 @@ participant	completion	return
 예제 #2
 “vinko”는 참여자 명단에는 있지만, 완주자 명단에는 없기 때문에 완주하지 못했습니다.
 예제 #3
-“mislav”는 참여자 명단에는 두 명이 있지만, 완주자 명단에는 한 명밖에 없기 때문에 한명은 완주하지 못했습니다.`
+“mislav”는 참여자 명단에는 두 명이 있지만, 완주자 명단에는 한 명밖에 없기 때문에 한명은 완주하지 못했습니다.`;
+const TERM_D = `node:internal/modules/cjs/loader:936
+throw err;
+^
+
+Error: Cannot find module '/Users/heavyrisem/Desktop/DY_Algorithm_Server/a'
+  at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+  at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+  at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:79:12)
+  at node:internal/main/run_main_module:17:47 {
+code: 'MODULE_NOT_FOUND',
+requireStack: []
+}`;
 
 interface Challenge_RouteParams {
     id: string
 }
 function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
     const {path, setPath} = useContext(PathContext);
+    const [code, setCode] = React.useState<string>("");
 
     useEffect(() => {
 
@@ -53,8 +69,16 @@ function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
             <HorizontalScaler>
                 <Description description={DESC_D} />
                 <VerticalScaler style={{overflow: 'hidden'}}>
-                    <Description description={DESC_D} />
-                    <Description description={DESC_D} />
+                    <MonacoEditor
+                        language="javascript"
+                        width="100%"
+                        height="100%"
+                        theme="vs-dark"
+                        value={code}
+                        options={{automaticLayout: true}}
+                        onChange={(code) => setCode(code)}
+                    />
+                    <Terminal output={TERM_D} />
                 </VerticalScaler>
             </HorizontalScaler>
         </div>

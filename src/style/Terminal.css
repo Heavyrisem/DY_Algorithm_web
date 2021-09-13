@@ -1,0 +1,40 @@
+.Terminal {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    /* padding: 1rem; */
+    box-sizing: border-box;
+}
+
+.Terminal > header {
+    width: 100%;
+    height: auto;
+    background-color: #252526;
+    display: flex;
+}
+
+.Tab {
+    cursor: pointer;
+    font-size: 1rem;
+    
+    padding: .5rem;
+    padding-bottom: .3rem;
+    box-sizing: border-box;
+
+    margin: 0;
+    margin-left: 1rem;
+
+    transition: all .3s;
+
+    border-bottom: solid .12rem #979797;
+}
+.Tab.activated {
+    color: white;
+    border-bottom: solid .12rem white;
+}
+
+.Terminal .View {
+    padding: 1rem;
+    box-sizing: border-box;
+}

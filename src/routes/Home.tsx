@@ -1,10 +1,16 @@
-import React, { useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import Board from "../componets/Board";
 import SearchBar from "../componets/SearchBar";
+import { PathContext } from "../Main";
 import '../style/Home.css';
 
 function Home() {
+    const { path, setPath } = useContext(PathContext);
     const Search = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        setPath([]);
+    }, []);
 
     return (
         <div className="Home">

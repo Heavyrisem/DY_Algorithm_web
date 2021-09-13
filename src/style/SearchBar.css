@@ -14,7 +14,7 @@
     background-color: #E0E0E0;
     /* transition: all 0.3s; */
 }
-.SearchBar:focus-within {
+.SearchBar[focus=true] {
     border-radius: 1rem 1rem 0 0;
 }
 
