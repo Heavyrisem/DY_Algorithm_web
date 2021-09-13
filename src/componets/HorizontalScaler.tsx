@@ -19,7 +19,6 @@ function HorizontalScaler(props: HorizontalScaler_P) {
 
             if (cal <= document.body.clientWidth * 0.1|| cal >= document.body.clientWidth * 0.9) return;
 
-            console.log(cal, window.screen.width);
             setWidth(cal);
 
         }

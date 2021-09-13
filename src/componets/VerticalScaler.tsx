@@ -27,7 +27,6 @@ function VerticalScaler(props: VerticalScaler_P) {
 
             if (cal <= Scaler.current?.clientHeight * 0.1 || cal >= Scaler.current?.clientHeight * 0.9) return;
 
-            console.log(cal, window.screen.height);
             setHeight(cal);
 
         }

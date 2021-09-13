@@ -64,13 +64,17 @@ function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
 
     },[])
 
+    useEffect(() => {
+        console.log(code);
+    }, [code])
+
     return (
         <div className="Challenge">
             <HorizontalScaler>
                 <Description description={DESC_D} />
                 <VerticalScaler style={{overflow: 'hidden'}}>
                     <MonacoEditor
-                        language="javascript"
+                        language="typescript"
                         width="100%"
                         height="100%"
                         theme="vs-dark"
