@@ -16,12 +16,11 @@ export interface User_T {
 
 function Main() {
 	const [User, setUser] = useState<User_T>();
+	const [path, setPath] = useState<string[]>([]);
 
-	const Path_C: PathContext_T = {
-		path: ['adsf'],
-		setPath: (path: string[]) => {
-			Path_C.path = path;
-		}
+	let Path_C: PathContext_T = {
+		path: path,
+		setPath: setPath
 	}
 
 	return (

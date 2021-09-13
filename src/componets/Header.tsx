@@ -9,6 +9,7 @@ interface Header_P {
     children: React.ReactElement | React.ReactElement[]
 }
 function Header(props: Header_P) {
+    const { path, setPath } = useContext(PathContext);
     const RightAligen: React.CSSProperties = {
         margin: 'auto',
         marginLeft: 'auto',
@@ -17,23 +18,19 @@ function Header(props: Header_P) {
     }
 
     return (
-        <PathContext.Consumer>
-            {({path, setPath}) => (
-                <header>
-                    <img src={Logo} className="Logo" />
-                    <span className="Title">DYalgorithm</span>
-                    {path.map((Path, idx) => (
-                        <>
-                            {(idx == Path.length-1)&& <span key={idx} className="PathDevider">/</span>}
-                            <span key={Path} className="Path">{Path}</span>
-                        </>
-                    ))}
-                    <div style={RightAligen}>
-                        {props.children}
-                    </div>
-                </header>
-            )}
-        </PathContext.Consumer>
+        <header>
+            <img src={Logo} className="Logo" />
+            <span className="Title">DYalgorithm</span>
+            {path.map((Path, idx) => (
+                <>
+                    {(idx == Path.length-1)&& <span key={idx} className="PathDevider">/</span>}
+                    <span key={Path} className="Path">{Path}</span>
+                </>
+            ))}
+            <div style={RightAligen}>
+                {props.children}
+            </div>
+        </header>
     )
 }
 

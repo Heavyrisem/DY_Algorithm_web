@@ -1,6 +1,8 @@
 .Home {
     width: 100%;
     height: 100%;
+
+    overflow: hidden;
 }
 
 .DashBoards {
@@ -9,5 +11,14 @@
     
     display: flex;
     margin: auto;
+    /* margin-top: 10%; */
+
+    /* position: relative; */
     margin-top: 15rem;
+}
+
+@media screen and (max-width: 1500px) {
+    .DashBoards {
+        margin-top: 10rem;
+    }
 }
