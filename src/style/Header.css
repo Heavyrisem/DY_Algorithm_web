@@ -31,3 +31,27 @@
 .Main > header .Path, .Main > header .PathDevider {
     margin-left: .3rem;
 }
+
+.Main > header .RunButton {
+    padding: .5rem 1rem;
+
+    color: #707070;
+    background-color: white;
+    border-radius: .5rem;
+    border: none;
+
+    margin-right: 1rem;
+
+    font-weight: bold;
+    font-size: 1rem;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    transition: all .3s;
+    cursor: pointer;
+}
+.Main > header .RunButton:hover {
+    color: white;
+    background-color: #707070;
+}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { PathContext } from "../Main";
+import { HeaderButtonsContext, PathContext } from "../Main";
 import '../style/Header.css';
 
 import Logo from '../style/img/Logo.svg';
@@ -11,6 +11,7 @@ interface Header_P {
 }
 function Header(props: Header_P) {
     const { path, setPath } = useContext(PathContext);
+    const { Buttons, setButtons } = useContext(HeaderButtonsContext);
     const RightAligen: React.CSSProperties = {
         margin: 'auto',
         marginLeft: 'auto',
@@ -30,6 +31,7 @@ function Header(props: Header_P) {
                 </>
             ))}
             <div style={RightAligen}>
+                {Buttons.map(Btn => Btn)}
                 {props.children}
             </div>
         </header>
