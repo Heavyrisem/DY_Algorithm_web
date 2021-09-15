@@ -40,7 +40,7 @@ function Main() {
 					<Sidemenu User={User} />
 				</Header>
 				<Switch>
-						<Route path="/challenge/:id" component={Challenge} />
+						<Route path="/challenge/:id" component={(match: any) => <Challenge match={match} />} />
 						<Route path="/login">
 							{User? <Redirect to="/" /> : <Login setUser={setUser} />}
 						</Route>

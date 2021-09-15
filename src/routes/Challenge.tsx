@@ -12,6 +12,7 @@ import { ENDPOINT } from './Config.json';
 import '../style/Challenge.css';
 import axios from 'axios';
 import { CompileRequest, CompileResponse, LANGUAGETYPE } from '../componets/Types';
+import { Dropdown } from '../componets/Sidemenu';
 
 
 const DESC_D = `문제 설명
@@ -54,35 +55,53 @@ Error: Cannot find module '/Users/heavyrisem/Desktop/DY_Algorithm_Server/a'
 code: 'MODULE_NOT_FOUND',
 requireStack: []
 }`;
-
 interface Challenge_RouteParams {
     id: string
 }
 function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
     const { path, setPath } = useContext(PathContext);
     const { Buttons, setButtons } = useContext(HeaderButtonsContext);
-    const [code, setCode] = useState<string>("");
+
+    const [type, setType] = useState<LANGUAGETYPE>(LANGUAGETYPE.NODEJS);
+    const [Language, setLanguage] = useState("");
+    const [Code, setCode] = useState<string>("");
+
+    // const [code, setCode] = useState<string>("");
     const [isRunning, setRunning] = useState<boolean>(false);
     const [TerminalOutput, setTermOutput] = useState<string>("결과가 여기에 표시됩니다.");
 
     useEffect(() => {
 
         setPath([match.params.id]);
-        setButtons(Buttons.concat([<RunComponent RunCode={RunCode} />]));
-    },[])
+
+        // function RunComponent() {
+        //     return (
+        //         <button className="RunButton" onClick={RunCode}>실행</button>
+        //     )
+        // }
+        // setButtons(Buttons.concat([<RunComponent />]));
+    },[]);
 
     useEffect(() => {
-        console.log(code);
-    }, [code])
+        let languagename = "";
+        
+        switch (type) {
+            case LANGUAGETYPE.NODEJS: languagename="javascript"; break;
+            case LANGUAGETYPE.C: languagename="cpp"; break;
+            case LANGUAGETYPE.PYTHON3: languagename="python"; break;
+        }
+        setLanguage(languagename);
+        console.log(type, languagename);
+    }, [type]);
 
     async function RunCode() {
         if (isRunning) return alert("이미 실행중입니다.");
-        console.log("Run", code);
+        console.log("Run", Code);
         setTermOutput("실행 중입니다.....");
         setRunning(true);
         const RequestOpt: CompileRequest = {
-            TYPE: LANGUAGETYPE.NODEJS,
-            code: code,
+            TYPE: type,
+            code: Code,
             Challenge_NO: 0,
             U_Token: "b55SG4VmcSm4AS6ln0xnrzzP7V7rNdnzEoZ94YIpjq7vyr7nfdVld0baCWgLXudDuz17sAUpOTx74K1koWZP2p"
         }
@@ -103,15 +122,25 @@ function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
             <HorizontalScaler>
                 <Description description={DESC_D} />
                 <VerticalScaler style={{overflow: 'hidden'}}>
-                    <MonacoEditor
-                        language="javascript"
-                        width="100%"
-                        height="100%"
-                        theme="vs-dark"
-                        value={code}
-                        options={{automaticLayout: true}}
-                        onChange={(code) => setCode(code)}
-                    />
+                    <>
+                        <div className="EditorHeader">
+                            <Dropdown name="" onValue={(e)=>{setType(e.target.value as LANGUAGETYPE)}}>
+                                <option value={LANGUAGETYPE.NODEJS}>Node.js</option>
+                                <option value={LANGUAGETYPE.C}>C</option>
+                                <option value={LANGUAGETYPE.PYTHON3}>Python3</option>
+                            </Dropdown>
+                            <button onClick={RunCode}>실행</button>
+                        </div>
+                        <MonacoEditor
+                            language={Language}
+                            width="100%"
+                            height="100%"
+                            theme="vs-dark"
+                            value={Code}
+                            options={{automaticLayout: true}}
+                            onChange={(str) => setCode(str)}
+                        />
+                    </>
                     <Terminal output={TerminalOutput} />
                 </VerticalScaler>
             </HorizontalScaler>
@@ -129,18 +158,6 @@ function Description(props: {description: string}) {
     )
 }
 
-interface RunComp_P {
-    RunCode: () => void
-}
-function RunComponent(props: RunComp_P) {
-    function onClick() {
-        console.log(props.RunCode);
-        props.RunCode();
-    }
 
-    return (
-        <button className="RunButton" onClick={onClick}>실행</button>
-    )
-}
 
 export default Challenge

@@ -90,7 +90,7 @@ interface Dropdown_Option_P {
     onValue: React.ChangeEventHandler<HTMLSelectElement>
     children: JSX.Element[] | JSX.Element
 }
-function Dropdown(props: Dropdown_Option_P) {
+export function Dropdown(props: Dropdown_Option_P) {
     let childrens = props.children;
     if (!(childrens instanceof Array)) childrens = [childrens];
 

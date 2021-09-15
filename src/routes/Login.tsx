@@ -1,9 +1,13 @@
+import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AccountButton from '../componets/AccountButton';
 import AccountInput from '../componets/AccountInput';
+import { LoginResponse, Login_Model_Param_T } from '../componets/Types';
 import { User_T } from '../Main';
 import '../style/Login.css';
+
+import { ENDPOINT } from './Config.json';
 
 
 interface Register_P {
@@ -15,14 +19,24 @@ function Login(props: Register_P) {
 
     const [message, setMessage] = useState<string>("");
 
-    function Login() {
+    async function Login() {
         if (ID.current && Password.current) {
             if (ID.current.value && Password.current.value) {
-                props.setUser({
+
+                const ServerResponse = await axios.post<LoginResponse>(`${ENDPOINT}/account/login`, {
                     U_ID: ID.current.value,
-                    U_Nickname: "Nickname",
-                    U_Token: "USER_Token"
-                })
+                    U_PW: Password.current.value
+                });
+
+                if (ServerResponse.data.success && ServerResponse.data.U_Token && ServerResponse.data.U_Nickname) {
+                    props.setUser({
+                        U_ID: ID.current.value,
+                        U_Token: ServerResponse.data.U_Token,
+                        U_Nickname: ServerResponse.data.U_Nickname
+                    })
+                } else {
+                    setMessage(ServerResponse.data.reason as string);
+                }
             } else setMessage("필수 입력값이 비었습니다.");
         } else setMessage("오류가 발생했습니다.");
     }
