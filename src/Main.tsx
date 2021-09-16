@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom';
 import Home from './routes/Home';
-import Challenge from './routes/Challenge';
+import Challenge, { Challenge_RouteParams } from './routes/Challenge';
 import Login from './routes/Login';
 import Register from './routes/Register';
 import Sidemenu from './componets/Sidemenu';
@@ -40,7 +40,7 @@ function Main() {
 					<Sidemenu User={User} />
 				</Header>
 				<Switch>
-						<Route path="/challenge/:id" component={(match: any) => <Challenge match={match} />} />
+						<Route path="/challenge/:id" component={(match: RouteComponentProps<Challenge_RouteParams>) => <Challenge match={match} />} />
 						<Route path="/login">
 							{User? <Redirect to="/" /> : <Login setUser={setUser} />}
 						</Route>

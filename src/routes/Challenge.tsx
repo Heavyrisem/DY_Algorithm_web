@@ -55,9 +55,10 @@ Error: Cannot find module '/Users/heavyrisem/Desktop/DY_Algorithm_Server/a'
 code: 'MODULE_NOT_FOUND',
 requireStack: []
 }`;
-interface Challenge_RouteParams {
+export interface Challenge_RouteParams {
     id: string
 }
+
 function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
     const { path, setPath } = useContext(PathContext);
     const { Buttons, setButtons } = useContext(HeaderButtonsContext);
