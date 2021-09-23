@@ -29,7 +29,7 @@ function Register(props: Register_P) {
                     U_ID: ID.current.value,
                     U_PW: Password.current.value,
                     U_Nickname: Nickname.current.value,
-                    // U_Email: Email.current.value
+                    U_Email: Email.current.value
                 });
 
                 if (ServerResponse.data.success && ServerResponse.data.U_Token && ServerResponse.data.U_Nickname) {

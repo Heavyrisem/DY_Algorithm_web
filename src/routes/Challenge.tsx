@@ -143,7 +143,7 @@ function Challenge(props: Challenge_P) {
                             height="100%"
                             theme="vs-dark"
                             value={Code}
-                            options={{automaticLayout: true}}
+                            options={{automaticLayout: true, smoothScrolling: true}}
                             onChange={(str) => setCode(str)}
                         />
                     </>
