@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router';
 import HorizontalScaler from '../componets/HorizontalScaler';
 import Terminal from '../componets/Terminal';
 import VerticalScaler from '../componets/VerticalScaler';
-import { HeaderButtonsContext, PathContext } from '../Main';
+import { HeaderButtonsContext, PathContext, User_T } from '../Main';
 
 import { ENDPOINT } from './Config.json';
 
@@ -58,8 +58,12 @@ requireStack: []
 export interface Challenge_RouteParams {
     id: string
 }
+interface Challenge_P {
+    match: RouteComponentProps<Challenge_RouteParams>
+    User?: User_T
+}
 
-function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
+function Challenge(props: Challenge_P) {
     const { path, setPath } = useContext(PathContext);
     const { Buttons, setButtons } = useContext(HeaderButtonsContext);
 
@@ -73,7 +77,7 @@ function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
 
     useEffect(() => {
 
-        setPath([match.params.id]);
+        setPath([props.match.match.params.id]);
 
         // function RunComponent() {
         //     return (
@@ -96,6 +100,7 @@ function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
     }, [type]);
 
     async function RunCode() {
+        if (!props.User) return alert("먼저 로그인 해 주세요");
         if (isRunning) return alert("이미 실행중입니다.");
         console.log("Run", Code);
         setTermOutput("실행 중입니다.....");
@@ -104,7 +109,7 @@ function Challenge({match}: RouteComponentProps<Challenge_RouteParams>) {
             TYPE: type,
             code: Code,
             Challenge_NO: 0,
-            U_Token: "b55SG4VmcSm4AS6ln0xnrzzP7V7rNdnzEoZ94YIpjq7vyr7nfdVld0baCWgLXudDuz17sAUpOTx74K1koWZP2p"
+            U_Token: props.User.U_Token
         }
         try {
             const ServerResponse = await axios.post<CompileResponse>(`${ENDPOINT}/compiler`, RequestOpt, {headers: {'Content-Type': 'application/json'}});

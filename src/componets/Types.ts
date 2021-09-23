@@ -30,9 +30,9 @@ export interface RegisterRequest {
 export interface RegisterResponse {
     success: boolean
     U_Token?: string
+    U_Nickname?: string
     reason?: string
 }
-
 export interface Login_Model_Param_T {
     U_ID: string
     U_PW: string
