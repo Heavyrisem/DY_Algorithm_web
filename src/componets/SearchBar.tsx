@@ -40,6 +40,9 @@ const SearchBar = React.forwardRef(function (props: SearchBar_P, ref: React.Lega
                 <div className="Suggest"  onClick={(e)=>{history.push('/challenge/문제 3번')}}>
                     문제 3번
                 </div>
+                <div className="Suggest"  onClick={(e)=>{history.push('/createchallenge')}}>
+                    문제 작성
+                </div>
             </div>
         </>
     )

@@ -7,6 +7,7 @@ import Login from './routes/Login';
 import Register from './routes/Register';
 import Sidemenu from './componets/Sidemenu';
 import Header from './componets/Header';
+import CreateChallenge from './routes/CreateChallenge';
 
 export interface User_T {
 	U_ID: string
@@ -41,6 +42,7 @@ function Main() {
 				</Header>
 				<Switch>
 						<Route path="/challenge/:id" render={(match) => <Challenge match={match} User={User} />} />
+						<Route path="/createchallenge/:challenge_ID?" render={(match) => <CreateChallenge match={match} User={User} />}></Route>
 						<Route path="/login">
 							{User? <Redirect to="/" /> : <Login setUser={setUser} />}
 						</Route>

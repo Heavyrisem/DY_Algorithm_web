@@ -6,6 +6,9 @@
     /* padding: 1rem; */
     box-sizing: border-box;
 }
+.Terminal > .View {
+    height: 100%;
+}
 
 .Terminal > header {
     width: 100%;

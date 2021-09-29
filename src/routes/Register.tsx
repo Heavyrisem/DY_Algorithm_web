@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router';
 import AccountButton from '../componets/AccountButton';
 import AccountInput from '../componets/AccountInput';
 import { RegisterResponse } from '../componets/Types';
@@ -13,6 +14,7 @@ interface Register_P {
     setUser: React.Dispatch<React.SetStateAction<User_T | undefined>>
 }
 function Register(props: Register_P) {
+    const hisotry = useHistory();
     const ID = useRef<HTMLInputElement>(null);
     const Password = useRef<HTMLInputElement>(null);
     const Nickname = useRef<HTMLInputElement>(null);
@@ -37,7 +39,8 @@ function Register(props: Register_P) {
                         U_ID: ID.current.value,
                         U_Token: ServerResponse.data.U_Token,
                         U_Nickname: ServerResponse.data.U_Nickname
-                    })
+                    });
+                    hisotry.goBack();
                 } else {
                     console.log(ServerResponse.data);
                     setMessage(ServerResponse.data.reason as string);

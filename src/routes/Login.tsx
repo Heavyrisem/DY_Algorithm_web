@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import AccountButton from '../componets/AccountButton';
 import AccountInput from '../componets/AccountInput';
 import { LoginResponse, Login_Model_Param_T } from '../componets/Types';
@@ -14,11 +14,12 @@ interface Register_P {
     setUser: React.Dispatch<React.SetStateAction<User_T | undefined>>
 }
 function Login(props: Register_P) {
+    const history = useHistory();
     const ID = useRef<HTMLInputElement>(null);
     const Password = useRef<HTMLInputElement>(null);
 
     const [message, setMessage] = useState<string>("");
-
+    
     async function Login() {
         if (ID.current && Password.current) {
             if (ID.current.value && Password.current.value) {
@@ -33,7 +34,8 @@ function Login(props: Register_P) {
                         U_ID: ID.current.value,
                         U_Token: ServerResponse.data.U_Token,
                         U_Nickname: ServerResponse.data.U_Nickname
-                    })
+                    });
+                    history.goBack();
                 } else {
                     setMessage(ServerResponse.data.reason as string);
                 }

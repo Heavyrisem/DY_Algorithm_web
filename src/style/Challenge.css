@@ -19,7 +19,7 @@
     padding: .5rem;
     box-sizing: border-box;
 
-    border-bottom: solid .25rem #444444;
+    border-bottom: solid .2rem #444444;
 }
 .EditorHeader * {
     margin: auto 0;
@@ -55,4 +55,8 @@
 .EditorHeader button:hover {
     color: white;
     background-color: #707070;
+}
+
+.Challenge .Write {
+    height: 100%;
 }
