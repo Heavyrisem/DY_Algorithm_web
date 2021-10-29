@@ -85,7 +85,7 @@ function Challenge(props: Challenge_P) {
 
         return (
             <div className="Write" ref={WriteRef}>
-                <MDEditor onChange={setDesc} value={Description} height={WriteRef.current?.clientHeight} />
+                <MDEditor style={{height: '100%'}} onChange={setDesc} value={Description} />
             </div>
         )
     })    
